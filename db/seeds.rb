@@ -9,7 +9,7 @@ User.destroy_all
 Event.destroy_all
 Attendance.destroy_all
 
-20.times do 
+2.times do 
 	u = User.create!(
 		email: "#{Faker::Internet.username}@yopmail.com",
 		encrypted_password: Faker::Number.number(10),
@@ -34,7 +34,7 @@ end
 	puts e
 end
 
-20.times do 
+2.times do 
 	Attendance.create!(
 		stripe_customer_id: Faker::Lorem.characters(10),
 		event: Event.all.sample,
