@@ -19,7 +19,7 @@
 
   <body style="margin-top: 50px;">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">EventBrite</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -52,7 +52,7 @@
           My profile
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="users#show">My profil</a>
+          <a class="dropdown-item" href="<%=user_path(current_user.id)%>">My profil</a>
           <%=link_to("Log out", destroy_user_session_path, method: :delete, class:"dropdown-item")%>
         </div>
       </li>
