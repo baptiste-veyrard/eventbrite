@@ -12,7 +12,7 @@ Attendance.destroy_all
 20.times do 
 	u = User.create!(
 		email: "#{Faker::Internet.username}@yopmail.com",
-		password: Faker::Number.number(10),
+		password: "000000",
 		first_name: Faker::Name.first_name,
 		last_name: Faker::Name.last_name,
 		description: Faker::Lorem.sentence(15)
