@@ -1,24 +1,34 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ceci est le projet "Eventbrite"
+baptiste et lionel
 
-Things you may want to cover:
+Pour tester notre site , tu dois suivre les étapes ci-dessous: 
 
-* Ruby version
+En Local :
+--------------------------------------------------------
 
-* System dependencies
+1. Clone ce repo : git clone https://github.com/baptiste-veyrard/eventbrite.git
+2. Fais un petit bundle install
+3. $ rails db:migrate
+4. $ rails db:seed 
+5. lancer le serveur  $: rails server 
 
-* Configuration
 
-* Database creation
+et c'est bon ! Tu peux commencer à regarder le projet en faisant :
 
-* Database initialization
+puis lancer ton navigateur web avec l'adresse suivante : 
 
-* How to run the test suite
+http://localhost:3000/
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+En version web, voici notre heroku :
+--------------------------------------------------------
+
+https://eventbrite-baptiste.herokuapp.com/
+
+
+
+Enjoy !
+
