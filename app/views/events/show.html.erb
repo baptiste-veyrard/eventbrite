@@ -1,0 +1,103 @@
+<br/>
+<div class="container d-flex flex-column align-items-center">
+
+	<h2>Event : <%=@event.title%></h2>
+
+	<img src="/event.png" style="width: 50%; height: auto;">
+<br/>
+
+	<% if Attendance.find_by(user_id: 'current_user.id', event_id: '@event.id')%>
+
+	<div><a class="btn btn-primary btn-lg" href="<%=destroy_attendance_path(@event.id)%>" method="delete">Remove participation</a></div>
+
+	<%else%>
+
+	<%= form_tag create_attendance_path do %>
+
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Pour participer, merci de payer le montant de <%=@event.price.to_f/100%> €</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount="<%=@event.price%>"
+          data-currency="eur"
+          data-locale="auto"></script>
+<% end %>
+
+	<% end %>
+
+<br/>
+	<p style="max-width: 60%; font-size: 17px; text-align: center;"><%=@event.description%></p>
+
+	<div class="row d-flex justify-content-center">
+
+		<div class="col-md-3 border_box">
+			<p class="title_cat">Start Date</p>
+			<span><%=@event.start_date%></span>
+		</div>
+
+		<div class="col-md-2 border_box">
+			<p class="title_cat">Duration</p>
+			<span><%=@event.duration%> minutes</span>
+		</div>
+
+		<div class="col-md-2 border_box">
+			<p class="title_cat">Price</p>
+			<span><%="#{@event.price}"%> €</span>
+		</div>
+
+		<div class="col-md-3 border_box">
+			<p class="title_cat">Location</p>
+			<span><%=@event.location%></span>
+		</div>
+
+		<div class="col-md-3 border_box">
+			<p class="title_cat">Organizer</p>
+			<span><%=@event.admin.first_name%> <%=@event.admin.last_name%></span>
+		</div>
+
+	</div>
+<br/>
+	<p>created at :</p>
+	<h6><%=@event.created_at%></h6>
+	
+
+</div>
+
+
+<style>
+	.border_box{
+		border-style: solid;
+		border-width: 2px;
+		border-radius: 10px;
+		margin: 10px;
+		text-align: center;
+	}
+
+	.title_cat{
+		color: red;
+	}
+</style>
+
+
+  <!-- create_table "events", force: :cascade do |t|
+    t.datetime "start_date"
+    t.integer "duration"
+    t.string "p"
+    t.text "description"
+    t.integer "price"
+    t.string "location"
+    t.bigint "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_events_on_admin_id"
+  end -->
