@@ -1,6 +1,9 @@
 <br/>
 <div class="container d-flex flex-column align-items-center">
 
+
+"#{user_id}"
+
 	<h2>Event : <%=@event.title%></h2>
 
 	<img src="/event.png" style="width: 50%; height: auto;">
@@ -12,7 +15,7 @@
 
 	<%else%>
 
-	<%= form_tag create_attendance_path do %>
+	<%= form_tag create_attendance_path(id: @event.id) do %>
 
   <article>
     <% if flash[:error].present? %>
@@ -21,6 +24,7 @@
       </div>
     <% end %>
     <label class="amount">
+    	Amount : <%=@event.price.to_f/100%>
       <span>Pour participer, merci de payer le montant de <%=@event.price.to_f/100%> €</span>
     </label>
   </article>

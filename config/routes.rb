@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :events
   resources :users, only: [:show]
-  resources :attendances
-  resources :charges, only: [:new, :create]
+  resources :attendances, only: [:new, :create]
+  resources :charges
   post 'events/attendances/:id', to: 'attendances#create',  as: 'create_attendance'
 
  root to: 'events#index'
